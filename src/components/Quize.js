@@ -9,7 +9,7 @@ const Quize = ({ onFinish, onResults }) => {
    const [Counts, setCout] = useState(0)
    const [Scores, setScore] = useState(0)
 
-   console.log(Questions);
+
    useEffect(() => {
       const getApi = () => {
 
@@ -53,7 +53,7 @@ const Quize = ({ onFinish, onResults }) => {
 
    }
 
-   console.log(Scores)
+
 
    return (
       <div>
