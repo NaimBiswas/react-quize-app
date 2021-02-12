@@ -10,7 +10,7 @@ const Quize = () => {
    useEffect(() => {
       const getApi = () => {
 
-         fetch('https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple').then(res => res.json()).then((result) => {
+         fetch('https://opentdb.com/api.php?amount=1s&category=18&difficulty=easy&type=multiple').then(res => res.json()).then((result) => {
             setQuestion(result.results)
          })
 
@@ -32,6 +32,12 @@ const Quize = () => {
    )
    const answers = [...Questions[Counts].incorrect_answers, Questions[Counts].correct_answer]
    const results = answers.sort(() => Math.random() - 0.5)
+   const CheckAnswer = (answer) => {
+      if (answer === Questions[Counts].correct_answer) {
+
+      }
+      setCout(Counts + 1)
+   }
    console.log(answers);
    console.log(Counts);
    return (
@@ -42,7 +48,7 @@ const Quize = () => {
                <h4>Category- {Questions[Counts].category}</h4>
                <div className="btn-group btn-group-vertical toggle w-100 " data-toggle='button'>
                   {
-                     results.map((answer, index) => <Answer key={index} answer={answer}></Answer>)
+                     results.map((answer, index) => <Answer key={index} answer={answer} onAnswer={(answer) => CheckAnswer(answer)}></Answer>)
                   }
                </div>
             </div>
