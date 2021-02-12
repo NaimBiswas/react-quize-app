@@ -11,7 +11,7 @@ const Quize = () => {
    useEffect(() => {
       const getApi = () => {
 
-         fetch('https://opentdb.com/api.php?amount=20&category=18&difficulty=medium&type=multiple').then(res => res.json()).then((result) => {
+         fetch('https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=multiple').then(res => res.json()).then((result) => {
             setQuestion(result.results)
          })
 
@@ -39,7 +39,14 @@ const Quize = () => {
       } else {
          setScore(Scores - .5)
       }
-      setCout(Counts + 1)
+      if (Counts < Questions.length - 1) {
+         setCout(Counts + 1);
+
+      } else {
+         (
+            <h2>Results : { Scores}</h2>
+         )
+      }
    }
 
    console.log(Scores)
@@ -51,13 +58,13 @@ const Quize = () => {
                <h4>Category- {Questions[Counts].category}</h4>
                <div className="btn-group btn-group-vertical toggle w-100 " data-toggle='button'>
                   {
-                     results.map((answer, index) => <Answer key={index} answer={answer} onAnswer={(answer) => CheckAnswer(answer)}></Answer>)
+                     results.map((answer, index) => <Answer InPutDisable={Counts === Questions.length - 1} key={index} answer={answer} onAnswer={(answer) => CheckAnswer(answer)}></Answer>)
                   }
                </div>
             </div>
          </div>
          <div className="card-footer pb-5">
-            <button onClick={() => setCout(Counts + 1) & setScore(Scores - .5)} className='btn btn-secondary float-right'>Next</button>
+            <button disabled={Counts === Questions.length - 1} onClick={() => setCout(Counts + 1) & setScore(Scores - .5)} className='btn btn-secondary float-right'>Next</button>
          </div>
 
       </div>
