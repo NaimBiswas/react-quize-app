@@ -39,6 +39,7 @@ const Quize = () => {
          <div className="card-body">
             <Question question={Questions[Counts].question} />
             <div className="card-text">
+               <h4>Category- {Questions[Counts].category}</h4>
                <div className="btn-group btn-group-vertical toggle w-100 " data-toggle='button'>
                   {
                      results.map((answer, index) => <Answer key={index} answer={answer}></Answer>)
