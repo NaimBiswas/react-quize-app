@@ -19,8 +19,10 @@ const Quize = () => {
       }
 
    }, [Questions, Counts]);
-   if (!Questions) return <p className='text-light text-muted'>Loading...</p>
-
+   if (!Questions) return <p className='text-light text-muted h4'>Loading...</p>
+   const answer = [...Questions[Counts].incorrect_answers, Questions[Counts].correct_answer]
+   console.log(answer);
+   console.log(Counts);
    return (
       <div>
          <div className="card-body">
@@ -30,6 +32,9 @@ const Quize = () => {
 
                </div>
             </div>
+         </div>
+         <div className="card-footer">
+            <button onClick={() => setCout(Counts + 1)} className='btn btn-secondary float-right'>Next</button>
          </div>
 
       </div>
