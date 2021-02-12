@@ -3,9 +3,10 @@ import Quize from './Quize'
 
 const Home = () => {
    const [finish, setFinish] = useState(false)
-   const [Results, setResults] = useState(0)
+   const [Results, setResults] = useState()
+   var con = Results
    if (finish) {
-      return <div className=""><h3>Results:- <span className='text-info'> {Results} </span></h3></div>
+      return <div className=""><h3>Results:- <span className={con <= 0 ? 'text-danger' : 'text-info'}>{Results}</span></h3></div >
    }
    return (
       <div>
