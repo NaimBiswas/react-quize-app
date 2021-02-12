@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Question = () => {
+const Question = ({ question }) => {
    return (
       <div>
-         <h4 className='card-text bg-info '>Quest Will sown Here</h4>
+         <h4 className='card-text bg-info '>{question}</h4>
       </div>
    )
 }
