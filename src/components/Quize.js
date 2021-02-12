@@ -11,7 +11,7 @@ const Quize = () => {
    useEffect(() => {
       const getApi = () => {
 
-         fetch('https://opentdb.com/api.php?amount=1s&category=18&difficulty=easy&type=multiple').then(res => res.json()).then((result) => {
+         fetch('https://opentdb.com/api.php?amount=20&category=18&difficulty=medium&type=multiple').then(res => res.json()).then((result) => {
             setQuestion(result.results)
          })
 
@@ -36,11 +36,12 @@ const Quize = () => {
    const CheckAnswer = (answer) => {
       if (answer === Questions[Counts].correct_answer) {
          setScore(Scores + 1)
+      } else {
+         setScore(Scores - .5)
       }
       setCout(Counts + 1)
    }
-   console.log(answers);
-   console.log(Counts);
+
    console.log(Scores)
    return (
       <div>
@@ -56,7 +57,7 @@ const Quize = () => {
             </div>
          </div>
          <div className="card-footer pb-5">
-            <button onClick={() => setCout(Counts + 1)} className='btn btn-secondary float-right'>Next</button>
+            <button onClick={() => setCout(Counts + 1) & setScore(Scores - .5)} className='btn btn-secondary float-right'>Next</button>
          </div>
 
       </div>
