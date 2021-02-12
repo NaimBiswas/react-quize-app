@@ -31,6 +31,7 @@ const Quize = () => {
       </Fragment>
    )
    const answers = [...Questions[Counts].incorrect_answers, Questions[Counts].correct_answer]
+   const results = answers.sort(() => Math.random() - 0.5)
    console.log(answers);
    console.log(Counts);
    return (
@@ -40,7 +41,7 @@ const Quize = () => {
             <div className="card-text">
                <div className="btn-group btn-group-vertical toggle w-100 " data-toggle='button'>
                   {
-                     answers.map((answer, index) => <Answer key={index} answer={answer}></Answer>)
+                     results.map((answer, index) => <Answer key={index} answer={answer}></Answer>)
                   }
                </div>
             </div>
