@@ -8,14 +8,17 @@ const Quize = () => {
    const [Questions, setQuestion] = useState(null)
    const [Counts, setCout] = useState(0)
    const [Scores, setScore] = useState(0)
-   const [Finish, setFinish] = useState(false)
+
    console.log(Questions);
    useEffect(() => {
       const getApi = () => {
 
-         fetch('https://opentdb.com/api.php?amount=5&category=18&difficulty=medium&type=multiple').then(res => res.json()).then((result) => {
-            setQuestion(result.results)
-         })
+         fetch(`https://opentdb.com/api.php?amount=5&category=${Math.floor(Math.random() * (32 - 10 + 1)) + 10}&difficulty=medium&type=multiple`)
+            .then(res => res.json()).then((result) => {
+               setQuestion(result.results)
+            }).catch((error) => {
+               console.log(error);
+            })
 
       }
       if (!Questions) {
@@ -44,12 +47,13 @@ const Quize = () => {
       if (Counts < Questions.length - 1) {
          setCout(Counts + 1);
       } else {
-         setFinish(true)
+
       }
 
    }
 
    console.log(Scores)
+
    return (
       <div>
          <div className="card-body">
@@ -66,10 +70,13 @@ const Quize = () => {
          </div>
          <div className="card-footer pb-5">
             <button disabled={Counts === Questions.length - 1} onClick={() => setCout(Counts + 1) & setScore(Scores - .5)} className='btn btn-secondary float-right'>Next</button>
+
          </div>
 
-      </div>
+      </div >
    )
 }
+
+
 
 export default Quize
