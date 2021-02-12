@@ -1,3 +1,4 @@
+
 import React, { Fragment, useEffect, useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 import Answer from './Answer'
@@ -20,7 +21,7 @@ const Quize = () => {
          getApi();
       }
 
-   }, [Questions, Counts]);
+   }, [Questions, Counts, Scores]);
    if (!Questions) return (
       <Fragment>
          <div className="text-center pt-3 pb-3">
@@ -42,11 +43,8 @@ const Quize = () => {
       if (Counts < Questions.length - 1) {
          setCout(Counts + 1);
 
-      } else {
-         (
-            <h2>Results : { Scores}</h2>
-         )
       }
+
    }
 
    console.log(Scores)
@@ -60,6 +58,7 @@ const Quize = () => {
                   {
                      results.map((answer, index) => <Answer InPutDisable={Counts === Questions.length - 1} key={index} answer={answer} onAnswer={(answer) => CheckAnswer(answer)}></Answer>)
                   }
+
                </div>
             </div>
          </div>
