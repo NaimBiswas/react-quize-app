@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Quize from './Quize'
 
 const Home = () => {
+   const [finish, setFinish] = useState(false)
+   if (finish) {
+      return <div className="">Results</div>
+   }
    return (
       <div>
          <div className="container">
@@ -11,7 +15,7 @@ const Home = () => {
                      <div className="card-header">
                         <h3>Welcome To Our React Quize</h3>
                      </div>
-                     <Quize></Quize>
+                     <Quize onFinish={(finish) => setFinish(finish)}></Quize>
                   </div>
                </div>
             </div>

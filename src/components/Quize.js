@@ -4,7 +4,7 @@ import { Spinner } from 'react-bootstrap'
 import Answer from './Answer'
 import Question from './Question'
 
-const Quize = () => {
+const Quize = ({ onFinish }) => {
    const [Questions, setQuestion] = useState(null)
    const [Counts, setCout] = useState(0)
    const [Scores, setScore] = useState(0)
@@ -47,7 +47,7 @@ const Quize = () => {
       if (Counts < Questions.length - 1) {
          setCout(Counts + 1);
       } else {
-
+         onFinish(true)
       }
 
    }
@@ -62,7 +62,7 @@ const Quize = () => {
                <h4>Category- {Questions[Counts].category}</h4>
                <div className="btn-group btn-group-vertical toggle w-100 " data-toggle='button'>
                   {
-                     results.map((answer, index) => <Answer InPutDisable={Counts === Questions.length - 1} key={index} answer={answer} onAnswer={(answer) => CheckAnswer(answer)}></Answer>)
+                     results.map((answer, index) => <Answer key={index} answer={answer} onAnswer={(answer) => CheckAnswer(answer)}></Answer>)
                   }
 
                </div>
