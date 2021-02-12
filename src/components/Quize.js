@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
+import { Spinner } from 'react-bootstrap'
 import Answer from './Answer'
 import Question from './Question'
 
@@ -19,7 +20,16 @@ const Quize = () => {
       }
 
    }, [Questions, Counts]);
-   if (!Questions) return <p className='text-light text-muted h4'>Loading...</p>
+   if (!Questions) return (
+      <Fragment>
+         <div className="text-center pt-3 pb-3">
+
+            <Spinner animation="border" role="status" variant='info' >
+
+            </Spinner>
+         </div>
+      </Fragment>
+   )
    const answers = [...Questions[Counts].incorrect_answers, Questions[Counts].correct_answer]
    console.log(answers);
    console.log(Counts);
@@ -35,7 +45,7 @@ const Quize = () => {
                </div>
             </div>
          </div>
-         <div className="card-footer">
+         <div className="card-footer pb-5">
             <button onClick={() => setCout(Counts + 1)} className='btn btn-secondary float-right'>Next</button>
          </div>
 
