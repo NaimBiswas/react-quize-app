@@ -19,7 +19,7 @@ const Quize = () => {
       }
 
    }, [Questions, Counts]);
-
+   if (!Questions) return <p className='text-light text-muted'>Loading...</p>
 
    return (
       <div>
