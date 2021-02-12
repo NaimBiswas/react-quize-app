@@ -7,17 +7,12 @@ const Home = () => {
          <div className="container">
             <div className="row">
                <div className="col-md-12">
-                  <div className="card bg-dark col-lg-12" >
-                     <div className="card-body">
-                        <h2 className="card-title">Hellow world</h2>
-                        {/* <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6> */}
-                        <p className="card-text">
-                           <Quize></Quize>
-                        </p>
-
+                  <div className="card bg-dark">
+                     <div className="card-header">
+                        <h3>Welcome To Our React Quize</h3>
                      </div>
+                     <Quize></Quize>
                   </div>
-
                </div>
             </div>
          </div>
