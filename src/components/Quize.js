@@ -4,7 +4,7 @@ import { Spinner } from 'react-bootstrap'
 import Answer from './Answer'
 import Question from './Question'
 
-const Quize = ({ onFinish }) => {
+const Quize = ({ onFinish, onResults }) => {
    const [Questions, setQuestion] = useState(null)
    const [Counts, setCout] = useState(0)
    const [Scores, setScore] = useState(0)
@@ -13,7 +13,7 @@ const Quize = ({ onFinish }) => {
    useEffect(() => {
       const getApi = () => {
 
-         fetch(`https://opentdb.com/api.php?amount=5&category=${Math.floor(Math.random() * (32 - 10 + 1)) + 10}&difficulty=medium&type=multiple`)
+         fetch(`https://opentdb.com/api.php?amount=16&category=${Math.floor(Math.random() * (32 - 10 + 1)) + 10}&difficulty=medium&type=multiple`)
             .then(res => res.json()).then((result) => {
                setQuestion(result.results)
             }).catch((error) => {
@@ -48,6 +48,7 @@ const Quize = ({ onFinish }) => {
          setCout(Counts + 1);
       } else {
          onFinish(true)
+         onResults(Scores)
       }
 
    }

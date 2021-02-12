@@ -3,8 +3,9 @@ import Quize from './Quize'
 
 const Home = () => {
    const [finish, setFinish] = useState(false)
+   const [Results, setResults] = useState(0)
    if (finish) {
-      return <div className="">Results</div>
+      return <div className=""><h3>Results:- <span className='text-info'> {Results} </span></h3></div>
    }
    return (
       <div>
@@ -15,7 +16,7 @@ const Home = () => {
                      <div className="card-header">
                         <h3>Welcome To Our React Quize</h3>
                      </div>
-                     <Quize onFinish={(finish) => setFinish(finish)}></Quize>
+                     <Quize onResults={(results) => setResults(results)} onFinish={(finish) => setFinish(finish)}></Quize>
                   </div>
                </div>
             </div>
