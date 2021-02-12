@@ -8,6 +8,7 @@ const Quize = () => {
    const [Questions, setQuestion] = useState(null)
    const [Counts, setCout] = useState(0)
    const [Scores, setScore] = useState(0)
+   const [Finish, setFinish] = useState(false)
    console.log(Questions);
    useEffect(() => {
       const getApi = () => {
@@ -42,7 +43,8 @@ const Quize = () => {
       }
       if (Counts < Questions.length - 1) {
          setCout(Counts + 1);
-
+      } else {
+         setFinish(true)
       }
 
    }
