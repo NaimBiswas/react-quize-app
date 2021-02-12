@@ -20,16 +20,18 @@ const Quize = () => {
 
    }, [Questions, Counts]);
    if (!Questions) return <p className='text-light text-muted h4'>Loading...</p>
-   const answer = [...Questions[Counts].incorrect_answers, Questions[Counts].correct_answer]
-   console.log(answer);
+   const answers = [...Questions[Counts].incorrect_answers, Questions[Counts].correct_answer]
+   console.log(answers);
    console.log(Counts);
    return (
       <div>
          <div className="card-body">
             <Question question={Questions[Counts].question} />
             <div className="card-text">
-               <div className="btn-group btn-group-vertical toggle " data-toggle='button'>
-
+               <div className="btn-group btn-group-vertical toggle w-100 " data-toggle='button'>
+                  {
+                     answers.map((answer, index) => <Answer key={index} answer={answer}></Answer>)
+                  }
                </div>
             </div>
          </div>
