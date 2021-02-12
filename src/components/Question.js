@@ -3,7 +3,7 @@ import React from 'react'
 const Question = ({ question }) => {
    return (
       <div>
-         <h4 className='card-text bg-info '>{question}</h4>
+         <h4 className='card-text bg-danger pb-2 pt-2 '>{question}</h4>
       </div>
    )
 }
