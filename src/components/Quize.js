@@ -70,7 +70,7 @@ const Quize = () => {
          </div>
          <div className="card-footer pb-5">
             <button disabled={Counts === Questions.length - 1} onClick={() => setCout(Counts + 1) & setScore(Scores - .5)} className='btn btn-secondary float-right'>Next</button>
-            <button onClick={(max, min) => (Math.floor(Math.random() * (32 - 10 + 1)) + 10)}>Random</button>
+            {/* <button onClick={(max, min) => (Math.floor(Math.random() * (32 - 10 + 1)) + 10)}>Random</button> */}
          </div>
 
       </div >
