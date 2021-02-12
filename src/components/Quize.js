@@ -6,6 +6,7 @@ import Question from './Question'
 const Quize = () => {
    const [Questions, setQuestion] = useState(null)
    const [Counts, setCout] = useState(0)
+   const [Scores, setScore] = useState(0)
    console.log(Questions);
    useEffect(() => {
       const getApi = () => {
@@ -34,12 +35,13 @@ const Quize = () => {
    const results = answers.sort(() => Math.random() - 0.5)
    const CheckAnswer = (answer) => {
       if (answer === Questions[Counts].correct_answer) {
-
+         setScore(Scores + 1)
       }
       setCout(Counts + 1)
    }
    console.log(answers);
    console.log(Counts);
+   console.log(Scores)
    return (
       <div>
          <div className="card-body">
